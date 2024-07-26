@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+actor Benutzer
+actor "Anderes Konto"
+actor KI
+
+rectangle "OneShot" {
+  Benutzer --> (Erweiterung öffnen)
+  Benutzer --> (Einstellungen konfigurieren)
+  Benutzer --> (Presetfunktion nutzen)
+  Benutzer --> (Von anderem Konto kopieren)
+  Benutzer --> (Inhalte in Bericht einfügen)
+  
+  (Presetfunktion nutzen) --> (Anwesenheit ausfüllen)
+  (Von anderem Konto kopieren) --> (Anmelden)
+  (Von anderem Konto kopieren) --> (Berichtsinhalte kopieren)
+  (Von anderem Konto kopieren) --> (Inhalte umformulieren)
+  (Inhalte umformulieren) --> (Umformulierte Inhalte zurückgeben)
+}
+
+"Anderes Konto" --> (Von anderem Konto kopieren) : "Zustimmung"
+KI --> (Inhalte umformulieren)
+
+@enduml
