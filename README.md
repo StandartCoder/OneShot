@@ -20,7 +20,7 @@
 <!-- Preview -->
 <p align="center">
   <a href="">
-    <img src="./assets/images/previews/preview.png" width="100%"/>
+    <img src="./assets/images/previews/soon.gif" width="20%" height="20%" />
   </a>
 </p>
 <br/>
