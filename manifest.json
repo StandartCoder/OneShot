@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "OneShot",
+    "version": "0.1",
+    "description": "A nice little helper for your report book",
+    "icons": {
+        "16": "src/assets/icon16.png",
+        "48": "src/assets/icon48.png",
+        "128": "src/assets/icon128.png"
+    },
+    "action": {
+        "default_popup": "src/popup/popup.html",
+        "default_icon": {
+            "16": "src/assets/icon16.png",
+            "48": "src/assets/icon48.png",
+            "128": "src/assets/icon128.png"
+        }
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "tabs"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
+    }
+}

@@ -1,0 +1,142 @@
+body {
+    width: 320px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    position: relative;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2d76b2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 0 5px;
+    background-color: #eef1f6;
+    color: #2d76b2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.tab:hover {
+    background-color: #d4e1f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tab.active {
+    background-color: #2d76b2;
+    color: #f7f9fc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.settings-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+    fill: #2d76b2;
+}
+
+.settings-icon:hover {
+    transform: rotate(90deg);
+}
+
+.loader-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loader-overlay.active {
+    display: flex;
+}
+
+.loader {
+    border: 4px solid rgba(51, 102, 204, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #2d76b2;
+    width: 24px;
+    height: 24px;
+    animation: spin 0.5s linear infinite, slowSpin 2s linear infinite 0.5s;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slowSpin {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(720deg); }
+}
+
+.loader-text {
+    margin-top: 10px;
+    color: #2d76b2;
+    font-size: 16px;
+}
+
+.wrong-site {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    color: #721c24;
+}
+
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Panes */
+
+.panePresent {
+    display: none;
+}
+
+.paneCopyPaste {
+    display: none;
+}
+
+.paneMore {
+    display: none;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>OneShot</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <!-- Loading -->
+        <div class="loader-overlay active" id="loaderOverlay">
+            <div class="loader"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+
+        <!-- Content -->
+        <div id="content">
+            <!-- Header -->
+            <img src="../assets/icon48.png" alt="OneShot" style="display: block; margin: 0 auto;" id="appIcon" />
+            <h1 id="title">OneShot</h1>
+            <img src="../assets/settings.png" alt="Settings" class="settings-icon" id="settingsIcon" />
+
+            <!-- Tabs -->
+            <div class="tabs" id="tabsContainer">
+                <div class="tab active" data-tab="panePreset" id="tabPreset">Preset</div>
+                <div class="tab" data-tab="paneCopyPaste" id="tabCopyPaste">Copy & Paste</div>
+                <div class="tab" data-tab="paneMore" id="tabMore">More</div>
+            </div>
+
+            <!-- Pane -->
+            <div id="pane">
+                <!-- Preset -->
+                <div id="panePreset" class="content active">
+                    <p>Preset</p>
+                </div>
+
+                <!-- Copy & Paste -->
+                <div id="paneCopyPaste" class="content">
+                    <p>Copy & Paste</p>
+                </div>
+                
+                <!-- More -->
+                <div id="paneMore" class="content">
+                    <p>More</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script -->
+        <script type="module" src="popup.js"></script>
+    </body>
+</html>
