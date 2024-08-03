@@ -66,8 +66,8 @@ h1 {
     top: 10px;
     left: 10px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     transition: transform 0.3s;
     fill: #2d76b2;
 }
@@ -136,22 +136,4 @@ h1 {
 
 .content.active {
     display: block;
-}
-
-.hidden {
-    display: none;
-}
-
-/* Panes */
-
-.panePresent {
-    display: none;
-}
-
-.paneCopyPaste {
-    display: none;
-}
-
-.paneMore {
-    display: none;
 }
