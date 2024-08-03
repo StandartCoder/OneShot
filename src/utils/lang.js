@@ -5,8 +5,10 @@ async function listLangs() {
     const maybeLangs = ['en', 'de', 'tr']; // adding more languages soon
 
     for (const lang of maybeLangs) {
-        await import(`../../locales/${lang}.json`);
-        langs.push(lang);
+        const response = await fetch(`../../locales/${lang}.json`);
+        
+        if (response.ok)
+            langs.push(lang);
     }
 
     return langs;
