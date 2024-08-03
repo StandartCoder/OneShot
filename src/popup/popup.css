@@ -61,6 +61,21 @@ h1 {
     transform: rotate(90deg);
 }
 
+.home-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+    fill: #2d76b2;
+}
+
+.home-icon:hover {
+    transform: rotate(-90deg);
+}
+
 .loader-overlay {
     display: none;
     position: fixed;
