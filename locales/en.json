@@ -3,5 +3,12 @@
     "wrong": "OneShot is not available on this site.",
     "tabPreset": "Preset",
     "tabCopyPaste": "Copy & Paste",
-    "tabMore": "More"
+    "tabMore": "More",
+
+    "homeTitle": "Welcome to OneShot",
+    "homeSubtitle": "OneShot is a browser extension designed to assist apprentices in writing their weekly reports more efficiently.",
+    "homeSubtitle2": "This extension simplifies the report-writing process with features like preset usage and copy-paste automation. More features are coming soon, so stay tuned!",
+    "homeLinks": "Links",
+    "homeGitHub": "GitHub Repository",
+    "homeCoffee": "Donate to Support"
 }
