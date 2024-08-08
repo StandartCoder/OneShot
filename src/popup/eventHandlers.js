@@ -6,10 +6,10 @@ export function initializeEventHandlers() {
     const contents = document.querySelectorAll('.content');
 
     const homeIcon = document.getElementById('homeIcon');
-    homeIcon.addEventListener('click', handleHomeIconClick);
+    homeIcon.addEventListener('click', () => handleHomeIconClick(tabs, contents));
 
     const settingsIcon = document.getElementById('settingsIcon');
-    settingsIcon.addEventListener('click', handleSettingsIconClick);
+    settingsIcon.addEventListener('click', () => handleIconClick('paneSettings', tabs, contents, false));
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => handleTabClick(tab, tabs, contents));
@@ -20,56 +20,71 @@ export function initializeEventHandlers() {
     }, 750);
 }
 
-function handleHomeIconClick() {
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
-
-    tabs.forEach(t => t.classList.remove('active'));
-    contents.forEach(content => content.classList.remove('active'));
-
-    const cache = getCache();
-    cache.lastPane = null;
-    setCache(cache);
-
-    document.getElementById('paneHome').classList.add('active');
+function handleHomeIconClick(tabs, contents) {
+    handleIconClick('paneHome', tabs, contents, true);
 }
 
-function handleSettingsIconClick() {
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
-
+function handleIconClick(targetPaneId, tabs, contents, updateCache = true) {
     tabs.forEach(t => t.classList.remove('active'));
-    contents.forEach(content => content.classList.remove('active'));
 
-    document.getElementById('paneSettings').classList.add('active');
+    fadeOutActiveContent(contents, () => {
+        showTargetPane(targetPaneId, contents);
+
+        if (updateCache) {
+            const cache = getCache();
+            cache.lastPane = targetPaneId === 'paneHome' ? null : targetPaneId;
+            setCache(cache);
+        }
+    });
 }
 
 function handleTabClick(tab, tabs, contents) {
     tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
 
-    contents.forEach(content => {
-        content.classList.remove('active');
-        if(content.id === tab.dataset.tab) {
-            content.classList.add('active');
+    fadeOutActiveContent(contents, () => {
+        showTargetPane(tab.dataset.tab, contents);
 
-            let cache = getCache();
-            cache.lastPane = tab.dataset.tab;
-            setCache(cache);
-        }
+        const cache = getCache();
+        cache.lastPane = tab.dataset.tab;
+        setCache(cache);
     });
+}
 
-    document.getElementById('settingsPage').classList.remove('active');
+function fadeOutActiveContent(contents, callback) {
+    const activeContent = document.querySelector('.content.active');
+    if (activeContent) {
+        activeContent.style.opacity = '0';
+        activeContent.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            activeContent.style.display = 'none';
+            activeContent.classList.remove('active');
+            if (callback) callback();
+        }, 300);
+    } else {
+        if (callback) callback();
+    }
+}
+
+function showTargetPane(targetPaneId, contents) {
+    const targetContent = document.getElementById(targetPaneId);
+    if (targetContent) {
+        targetContent.style.display = 'block';
+        setTimeout(() => {
+            targetContent.classList.add('active');
+            targetContent.style.opacity = '1';
+            targetContent.style.transform = 'translateY(0)';
+        }, 50);
+    }
 }
 
 async function initializeContent(tabs, contents) {
-    let checkIfOnRightSite = false;
-
     const url = await getCurrentTabUrl();
-    checkIfOnRightSite = url.includes('ihk.de');
+    const checkIfOnRightSite = url.includes('ihk.de');
 
     if (!checkIfOnRightSite) {
         document.getElementById('content').innerHTML = `<h1 id="wrong">{wrong}</h1>`;
+        return;
     }
 
     const lang = getCurrentLang();
@@ -82,27 +97,21 @@ async function initializeContent(tabs, contents) {
         }
     });
 
-    const cache = getCache(); let tab;
+    const cache = getCache();
     if (cache.lastPane) {
-        if (cache.lastPane === 'panePreset') {
-            tab = tabs[0];
-        }
+        const homePane = document.getElementById('paneHome');
+        homePane.classList.remove('active');
+        homePane.style.display = 'none';
 
-        if (cache.lastPane === 'paneCopyPaste') {
-            tab = tabs[1];
-        }
+        showTargetPane(cache.lastPane, contents);
 
-        if (cache.lastPane === 'paneMore') {
-            tab = tabs[2];
-        }
-
-        tab.classList.add('active');
-        contents.forEach(content => {
-            content.classList.remove('active');
-            if(content.id === tab.dataset.tab) {
-                content.classList.add('active');
+        tabs.forEach(tab => {
+            if (tab.dataset.tab === cache.lastPane) {
+                tab.classList.add('active');
             }
         });
+    } else {
+        showTargetPane('paneHome', contents);
     }
 
     document.getElementById('loaderOverlay').classList.remove('active');
