@@ -84,7 +84,6 @@ async function initializeContent(tabs, contents) {
 
     if (!checkIfOnRightSite) {
         document.getElementById('content').innerHTML = `<h1 id="wrong">{wrong}</h1>`;
-        return;
     }
 
     const lang = getCurrentLang();
