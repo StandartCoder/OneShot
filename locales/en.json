@@ -32,5 +32,13 @@
     "languageSelectLabel": "Language",
     "accountButton": "Account Section",
     "saveButton": "Save Settings",
-    "clearCacheButton": "Clear Cache"
+    "clearCacheButton": "Clear Cache",
+    "resetButton": "Reset",
+
+    "modalButtonSave": "Save",
+    "modalButtonCancel": "Cancel",
+    "modalEmptyFields": "Please fill out at least one field.",
+    "modalPhrasePromt": "Please enter your passphrase to decrypt your password:",
+    "modalPhrasePromtE": "Please enter an passphrase to encrypt your password:",
+    "modalPhraseWrong": "Incorrect passphrase. The current password will not be shown."
 }

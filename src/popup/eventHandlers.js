@@ -1,7 +1,10 @@
 import { getCache, setCache } from '../utils/cache.js';
 import { getCurrentLang, getLangData, listLangs } from '../utils/lang.js';
+import { getSettings, setSettings } from '../utils/settings.js';
+import { encryptPassword, decryptPassword } from '../utils/crypto.js';
 
 export function initializeEventHandlers() {
+    const appIcon = document.getElementById('appIcon');
     const tabs = document.querySelectorAll('.tab');
     const contents = document.querySelectorAll('.content');
 
@@ -30,6 +33,125 @@ export function initializeEventHandlers() {
         cache.rephrase = rephraseCheckbox.checked;
         setCache(cache);
     });
+
+    const langSelect = document.getElementById('languageSelect');
+    langSelect.addEventListener('change', async () => {
+        const selectedLang = langSelect.value;
+        const set = getSettings();
+        set.language = selectedLang;
+        setSettings(set);
+
+        const lang = getCurrentLang();
+        const langData = await getLangData(lang);
+
+        Object.keys(langData).forEach((key) => {
+            const element = document.getElementById(key);
+            if (element) {
+                element.innerText = langData[key];
+            }
+        });
+    });
+
+    const accountButton = document.getElementById('accountButton');
+    accountButton.addEventListener('click', async () => {
+        const cLang = getCurrentLang();
+        const langData = await getLangData(cLang);
+
+        document.getElementById('modalInputMail').value = getSettings().email;
+        document.getElementById('modalOverlay').classList.add('active');
+
+        document.getElementById('togglePassword').innerHTML = '🙈';
+        document.getElementById('modalInputPassword').type = 'password';
+
+        if (getSettings().password != '') {
+            let passphrase = prompt(langData.modalPhrasePromt);
+            let password = await decryptPassword(getSettings().password, passphrase);
+
+            if (password != null) {
+                document.getElementById('modalInputPassword').value = password;
+            } else {
+                alert(langData.modalPhraseWrong);
+            }
+        }
+    });
+
+    const togglePasswordButton = document.getElementById('togglePassword');
+    togglePasswordButton.addEventListener('click', () => {
+        const passwordInput = document.getElementById('modalInputPassword');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            togglePasswordButton.innerHTML = '🙉';
+        } else {
+            passwordInput.type = 'password';
+            togglePasswordButton.innerHTML = '🙈';
+        }
+    });
+
+    const modalButtonSave = document.getElementById('modalButtonSave');
+    modalButtonSave.addEventListener('click', async () => {
+        const cLang = getCurrentLang();
+        const langData = await getLangData(cLang);
+
+        const set = getSettings();
+        const email = document.getElementById('modalInputMail').value;
+        const password = document.getElementById('modalInputPassword').value;
+
+        if (email === '' && password === '') {
+            alert(langData.modalEmptyFields);
+            return;
+        }
+
+        set.email = email;
+        set.password = '';
+
+        if (password != '') {
+            let passphrase = prompt(langData.modalPhrasePromtE);
+
+            while (passphrase == '') {
+                passphrase = prompt(langData.modalPhrasePromtE);
+            }
+
+            let encryptedPassword = await encryptPassword(password, passphrase);
+            set.password = encryptedPassword;
+        }
+
+        setSettings(set);
+
+        document.getElementById('modalInputMail').value = '';
+        document.getElementById('modalInputPassword').value = '';
+        document.getElementById('modalOverlay').classList.remove('active');
+    });
+
+    const modalButtonCancel = document.getElementById('modalButtonCancel');
+    modalButtonCancel.addEventListener('click', () => {
+        document.getElementById('modalInputMail').value = '';
+        document.getElementById('modalInputPassword').value = '';
+        document.getElementById('modalOverlay').classList.remove('active');
+    });
+
+    const clearCacheButton = document.getElementById('clearCacheButton');
+    clearCacheButton.addEventListener('click', () => {
+        setCache(null);
+        location.reload();
+    });
+
+    const resetButton = document.getElementById('resetButton');
+    resetButton.addEventListener('click', () => {
+        setSettings(null);
+        setCache(null);
+        location.reload();
+    });
+
+    function wiggleMe() {
+        appIcon.classList.add('wiggle');
+        setTimeout(() => {
+            appIcon.classList.remove('wiggle');
+        }, 1500);
+
+        setTimeout(wiggleMe, 6500);
+    }
+
+    wiggleMe();
 
     setTimeout(async () => {
         await initializeContent(tabs, contents);
@@ -114,7 +236,7 @@ async function initializeContent(tabs, contents) {
 
     if (checkIfOnRightSite) {
         const langSelect = document.getElementById('languageSelect');
-        const langs = await listLangs();
+        let langs = await listLangs();
 
         langs.forEach( async (tLang) => {
             const langDataOfLang = await getLangData(tLang);

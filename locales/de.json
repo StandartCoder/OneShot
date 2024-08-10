@@ -32,5 +32,13 @@
     "languageSelectLabel": "Sprache",
     "accountButton": "Kontobereich",
     "saveButton": "Einstellungen speichern",
-    "clearCacheButton": "Cache leeren"
+    "clearCacheButton": "Cache leeren",
+    "resetButton": "Zurücksetzen",
+
+    "modalButtonSave": "Speichern",
+    "modalButtonCancel": "Abbrechen",
+    "modalEmptyFields": "Bitte füllen Sie mindestens ein Feld aus.",
+    "modalPhrasePromt": "Bitte geben Sie Ihren Passphrase ein, um Ihr Passwort zu entschlüsseln:",
+    "modalPhrasePromtE": "Bitte geben Sie einen Passphrase ein, um Ihr Passwort zu verschlüsseln:",
+    "modalPhraseWrong": "Falscher Passphrase. Das aktuelle Passwort wird nicht angezeigt."
 }

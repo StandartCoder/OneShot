@@ -22,6 +22,32 @@ h3 {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.app-icon {
+    display: block;
+    margin: 0 auto;
+    transform-origin: center;
+}
+
+.wiggle {
+    animation: wiggle 0.75s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+}
+
+
 .tabs {
     display: flex;
     justify-content: space-around;
@@ -340,4 +366,90 @@ h3 {
 .settings-seperator {
     margin: 10px 0;
     border-top: 1px solid #ccc;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(75, 75, 75, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    width: 320px;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.modal-input, .modal-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+    color: #3366cc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.modal-input:focus {
+    outline: none;
+}
+
+.modal-button:hover {
+    background-color: #d4e1f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.settings-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+    color: #3366cc;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
 }

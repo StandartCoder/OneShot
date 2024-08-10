@@ -12,10 +12,24 @@
             <div class="loader-text">Loading...</div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <input type="text" id="modalInputMail" class="modal-input" placeholder="Email-Address" />
+                <div class="password-container">
+                    <input type="password" id="modalInputPassword" class="settings-input modal-input" placeholder="Password" />
+                    <p id="togglePassword" class="toggle-password">🙈</p>
+                </div>
+                
+                <button id="modalButtonSave" class="modal-button"></button>
+                <button id="modalButtonCancel" class="modal-button"></button>
+            </div>
+        </div>
+
         <!-- Content -->
         <div id="content">
             <!-- Header -->
-            <img src="../assets/icon48.png" alt="OneShot" style="display: block; margin: 0 auto;" id="appIcon" />
+            <img src="../assets/icon48.png" alt="OneShot" style="display: block; margin: 0 auto;" id="appIcon" class="app-icon" />
             <h1 id="title">OneShot</h1>
             <img src="../assets/home.png" alt="Home" class="home-icon" id="homeIcon" />
             <img src="../assets/settings.png" alt="Settings" class="settings-icon" id="settingsIcon" />
@@ -92,14 +106,14 @@
                     <!-- Account Section -->
                     <button id="accountButton" class="settings-button"></button>
 
-                    <!-- Save Button -->
-                    <button id="saveButton" class="settings-button"></button>
-
                     <!-- Seperator -->
                     <hr class="settings-seperator"/>
 
                     <!-- Clear Cache -->
                     <button id="clearCacheButton" class="settings-button"></button>
+
+                    <!-- Reset -->
+                    <button id="resetButton" class="settings-button"></button>
                 </div>
             </div>
         </div>
