@@ -15,6 +15,22 @@ export function initializeEventHandlers() {
         tab.addEventListener('click', () => handleTabClick(tab, tabs, contents));
     });
 
+    const presetSelect = document.getElementById('presetSelect');
+    const rephraseCheckbox = document.getElementById('rephraseCheckbox');
+
+    presetSelect.addEventListener('change', () => {
+        const selectedPreset = presetSelect.value;
+        const cache = getCache();
+        cache.lastPreset = selectedPreset;
+        setCache(cache);
+    });
+
+    rephraseCheckbox.addEventListener('change', () => {
+        const cache = getCache();
+        cache.rephrase = rephraseCheckbox.checked;
+        setCache(cache);
+    });
+
     setTimeout(async () => {
         await initializeContent(tabs, contents);
     }, 750);
@@ -96,21 +112,22 @@ async function initializeContent(tabs, contents) {
         }
     });
 
-    const langSelect = document.getElementById('languageSelect');
-    const langs = await listLangs();
+    if (checkIfOnRightSite) {
+        const langSelect = document.getElementById('languageSelect');
+        const langs = await listLangs();
 
-    langs.forEach( async (tLang) => {
-        const langDataOfLang = await getLangData(tLang);
-        const option = document.createElement('option');
-        option.value = tLang;
-        option.id = tLang;
-        option.innerText = langDataOfLang['name'];
-        langSelect.appendChild(option);
+        langs.forEach( async (tLang) => {
+            const langDataOfLang = await getLangData(tLang);
+            const option = document.createElement('option');
+            option.value = tLang;
+            option.id = tLang;
+            option.innerText = langDataOfLang['name'];
+            langSelect.appendChild(option);
 
-        if (lang === tLang) {
-            option.selected = true;
-        }
-    });
+            if (lang === tLang)
+                option.selected = true;
+        });
+    }
 
     const cache = getCache();
     if (checkIfOnRightSite && cache.lastPane) {
@@ -128,6 +145,12 @@ async function initializeContent(tabs, contents) {
     } else {
         showTargetPane('paneHome', contents);
     }
+
+    if (checkIfOnRightSite && cache.lastPreset)
+        document.getElementById(cache.lastPreset).selected = true;
+
+    if (checkIfOnRightSite && cache.rephrase)
+        document.getElementById("rephraseCheckbox").checked = true;
 
     document.getElementById('loaderOverlay').classList.remove('active');
 }

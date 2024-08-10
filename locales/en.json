@@ -29,5 +29,8 @@
     "themeSelectLabel": "Theme (Coming Soon)",
     "light": "Light",
     "dark": "Dark",
-    "languageSelectLabel": "Language"
+    "languageSelectLabel": "Language",
+    "accountButton": "Account Section",
+    "saveButton": "Save Settings",
+    "clearCacheButton": "Clear Cache"
 }

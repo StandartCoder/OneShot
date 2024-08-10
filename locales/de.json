@@ -29,5 +29,8 @@
     "themeSelectLabel": "Design (In Arbeit)",
     "light": "Hell",
     "dark": "Dunkel",
-    "languageSelectLabel": "Sprache"
+    "languageSelectLabel": "Sprache",
+    "accountButton": "Kontobereich",
+    "saveButton": "Einstellungen speichern",
+    "clearCacheButton": "Cache leeren"
 }

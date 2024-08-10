@@ -313,3 +313,31 @@ h3 {
     color: #888;
     cursor: not-allowed;
 }
+
+.settings-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+    color: #3366cc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.settings-button:hover {
+    background-color: #d4e1f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.settings-button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.settings-seperator {
+    margin: 10px 0;
+    border-top: 1px solid #ccc;
+}
