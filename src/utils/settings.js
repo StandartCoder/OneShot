@@ -1,12 +1,7 @@
-const defaultSettings = {
-    theme: 'light',
-    language: 'en',
-    email: '',
-    password: '',
-};
+import config from "../config.js";
 
 function getSettings() {
-    return JSON.parse(localStorage.getItem('settings')) || defaultSettings;;
+    return JSON.parse(localStorage.getItem('settings')) || config.defaultSettings;;
 }
 
 function setSettings(settings) {

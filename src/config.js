@@ -6,6 +6,12 @@ const config = {
             logo: '../assets/icon48.png',
             settings: '../assets/settings.png'
         }
+    },
+    defaultSettings: {
+        theme: 'light',
+        language: 'en',
+        email: '',
+        password: '',
     }
 };
 

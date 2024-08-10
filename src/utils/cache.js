@@ -1,7 +1,5 @@
-const defaultCache = {};
-
 function getCache() {
-    return JSON.parse(localStorage.getItem('cache')) || defaultCache;;
+    return JSON.parse(localStorage.getItem('cache')) || {};;
 }
 
 function setCache(cache) {
