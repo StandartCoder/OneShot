@@ -1,5 +1,5 @@
 import { getCache, setCache } from '../utils/cache.js';
-import { getCurrentLang, getLangData } from '../utils/lang.js';
+import { getCurrentLang, getLangData, listLangs } from '../utils/lang.js';
 
 export function initializeEventHandlers() {
     const tabs = document.querySelectorAll('.tab');
@@ -96,8 +96,24 @@ async function initializeContent(tabs, contents) {
         }
     });
 
+    const langSelect = document.getElementById('languageSelect');
+    const langs = await listLangs();
+
+    langs.forEach( async (tLang) => {
+        const langDataOfLang = await getLangData(tLang);
+        const option = document.createElement('option');
+        option.value = tLang;
+        option.id = tLang;
+        option.innerText = langDataOfLang['name'];
+        langSelect.appendChild(option);
+
+        if (lang === tLang) {
+            option.selected = true;
+        }
+    });
+
     const cache = getCache();
-    if (cache.lastPane) {
+    if (checkIfOnRightSite && cache.lastPane) {
         const homePane = document.getElementById('paneHome');
         homePane.classList.remove('active');
         homePane.style.display = 'none';

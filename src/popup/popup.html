@@ -44,22 +44,50 @@
 
                 <!-- Preset -->
                 <div id="panePreset" class="content">
-                    <p>Preset</p>
+                    <!-- <label for="presetSelect" class="preset-label" id="presetSelectLabel"></label> -->
+                    <select id="presetSelect" class="preset-select">
+                        <option value="presetBetrieb" id="presetBetrieb"></option>
+                        <option value="presetSchule" id="presetSchule"></option>
+                        <option value="presetUrlaub" id="presetUrlaub"></option>
+                    </select>
+                    <button id="usePresetButton" class="preset-button"></button>
                 </div>
 
                 <!-- Copy & Paste -->
                 <div id="paneCopyPaste" class="content">
-                    <p>Copy & Paste</p>
+                    <label class="copy-checkbox">
+                        <input type="checkbox" id="rephraseCheckbox" />
+                        Rephrase using AI
+                    </label>
+                    <label class="copy-checkbox">
+                        <input type="checkbox" id="comingSoonCheckbox" disabled />
+                        Coming Soon
+                    </label>
+                
+                    <button id="oneDayButton" class="copy-button"></button>
+                    <button id="wholeWeekButton" class="copy-button"></button>
+                
+                    <textarea id="logTextbox" class="log-textbox" placeholder="..." readonly></textarea>
                 </div>
                 
                 <!-- More -->
                 <div id="paneMore" class="content">
-                    <p>More</p>
+                    <h2 id="moreTitle"></h2>
+                    <p id="moreSubtitle"></p>
                 </div>
 
                 <!-- Settings -->
                 <div id="paneSettings" class="content">
-                    <p>Settings</p>
+                    <!-- Theme Section (Coming Soon) -->
+                    <label id="themeSelectLabel" for="themeSelect" class="settings-label"></label>
+                    <select id="themeSelect" class="settings-select" disabled>
+                        <option value="light" id="light"></option>
+                        <option value="dark" id="dark"></option>
+                    </select>
+                
+                    <!-- Language Section -->
+                    <label id="languageSelectLabel" for="languageSelect" class="settings-label"></label>
+                    <select id="languageSelect" class="settings-select"></select>
                 </div>
             </div>
         </div>

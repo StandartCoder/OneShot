@@ -10,5 +10,24 @@
     "homeSubtitle2": "Diese Erweiterung vereinfacht den Berichtsschreibprozess mit Funktionen wie der Verwendung von Vorlagen und der Automatisierung von Copy & Paste. Weitere Funktionen sind in Arbeit, also bleiben Sie dran!",
     "homeLinks": "Links",
     "homeGitHub": "GitHub Repository",
-    "homeCoffee": "Spenden zur Unterstützung"
+    "homeCoffee": "Spenden zur Unterstützung",
+
+    "presetSelectLabel": "Vorlage auswählen",
+    "usePresetButton": "Vorlage verwenden",
+    "presetBetrieb": "Betriebswoche",
+    "presetSchule": "Berufsschulwoche",
+    "presetUrlaub": "Urlaubswoche",
+
+    "rephraseCheckboxLabel": "Mit KI umformulieren",
+    "comingSoonCheckboxLabel": "In Arbeit",
+    "oneDayButton": "Einen Tag kopieren",
+    "wholeWeekButton": "Ganze Woche kopieren",
+
+    "moreTitle": "Mehr Funktionen",
+    "moreSubtitle": "Weitere Funktionen sind in Entwicklung. Bleiben Sie dran für Updates!",
+
+    "themeSelectLabel": "Design (In Arbeit)",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "languageSelectLabel": "Sprache"
 }

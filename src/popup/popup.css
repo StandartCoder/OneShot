@@ -11,14 +11,14 @@ h1 {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
-    color: #2d76b2;
+    color: #3366cc;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 h3 {
     font-size: 15px;
     font-weight: bold;
-    color: #2d76b2;
+    color: #3366cc;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -37,7 +37,7 @@ h3 {
     border-radius: 10px;
     margin: 0 5px;
     background-color: #eef1f6;
-    color: #2d76b2;
+    color: #3366cc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -48,7 +48,7 @@ h3 {
 }
 
 .tab.active {
-    background-color: #2d76b2;
+    background-color: #3366cc;
     color: #f7f9fc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -61,7 +61,7 @@ h3 {
     width: 24px;
     height: 24px;
     transition: transform 0.3s;
-    fill: #2d76b2;
+    fill: #3366cc;
 }
 
 .settings-icon:hover {
@@ -76,7 +76,7 @@ h3 {
     width: 20px;
     height: 20px;
     transition: transform 0.3s;
-    fill: #2d76b2;
+    fill: #3366cc;
 }
 
 .home-icon:hover {
@@ -105,7 +105,7 @@ h3 {
 .loader {
     border: 4px solid rgba(51, 102, 204, 0.3);
     border-radius: 50%;
-    border-top: 4px solid #2d76b2;
+    border-top: 4px solid #3366cc;
     width: 24px;
     height: 24px;
     animation: spin 0.5s linear infinite, slowSpin 2s linear infinite 0.5s;
@@ -123,7 +123,7 @@ h3 {
 
 .loader-text {
     margin-top: 10px;
-    color: #2d76b2;
+    color: #3366cc;
     font-size: 16px;
 }
 
@@ -154,7 +154,7 @@ h3 {
     font-size: 20px;
     margin-bottom: 15px;
     text-align: center;
-    color: #2d76b2;
+    color: #3366cc;
 }
 
 .content p {
@@ -175,11 +175,141 @@ h3 {
 }
 
 .content ul li a {
-    color: #2d76b2;
+    color: #3366cc;
     text-decoration: none;
     font-weight: bold;
 }
 
 .content ul li a:hover {
     text-decoration: underline;
+}
+
+.preset-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #3366cc;
+    font-weight: bold;
+}
+
+.preset-button, .preset-select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+    color: #3366cc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.preset-button:hover {
+    background-color: #d4e1f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.preset-button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.copy-checkbox {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #3366cc;
+    cursor: pointer;
+}
+
+.copy-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.copy-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+    color: #3366cc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background-color: #d4e1f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.copy-button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.log-textbox {
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+    color: #333;
+    resize: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.log-textbox.active {
+    display: block;
+}
+
+#moreTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #3366cc;
+}
+
+#moreSubtitle {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #333;
+}
+
+.settings-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #3366cc;
+    font-weight: bold;
+}
+
+.settings-select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    margin-top: 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+    color: #3366cc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.settings-select[disabled] {
+    background-color: #ddd;
+    color: #888;
+    cursor: not-allowed;
 }

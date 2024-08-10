@@ -10,5 +10,24 @@
     "homeSubtitle2": "This extension simplifies the report-writing process with features like preset usage and copy-paste automation. More features are coming soon, so stay tuned!",
     "homeLinks": "Links",
     "homeGitHub": "GitHub Repository",
-    "homeCoffee": "Donate to Support"
+    "homeCoffee": "Donate to Support",
+
+    "presetSelectLabel": "Choose a Preset",
+    "usePresetButton": "Use Preset",
+    "presetBetrieb": "Company Week",
+    "presetSchule": "Vocational School Week",
+    "presetUrlaub": "Vacation Week",
+
+    "rephraseCheckboxLabel": "Rephrase using AI",
+    "comingSoonCheckboxLabel": "Coming Soon",
+    "oneDayButton": "Copy One Day",
+    "wholeWeekButton": "Copy Whole Week",
+
+    "moreTitle": "More Features",
+    "moreSubtitle": "More features are in development. Stay tuned for updates!",
+
+    "themeSelectLabel": "Theme (Coming Soon)",
+    "light": "Light",
+    "dark": "Dark",
+    "languageSelectLabel": "Language"
 }
