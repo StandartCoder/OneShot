@@ -44,12 +44,14 @@ export function initializeEventHandlers() {
         const lang = getCurrentLang();
         const langData = await getLangData(lang);
 
-        Object.keys(langData).forEach((key) => {
+        Object.keys(langData).forEach( async (key) => {
             const element = document.getElementById(key);
             if (element) {
                 element.innerText = langData[key];
             }
         });
+
+        location.reload();
     });
 
     const accountButton = document.getElementById('accountButton');
@@ -107,7 +109,7 @@ export function initializeEventHandlers() {
         if (password != '') {
             let passphrase = prompt(langData.modalPhrasePromtE);
 
-            while (passphrase == '') {
+            while (passphrase == null || passphrase == '') {
                 passphrase = prompt(langData.modalPhrasePromtE);
             }
 
@@ -230,13 +232,19 @@ async function initializeContent(tabs, contents) {
     Object.keys(langData).forEach((key) => {
         const element = document.getElementById(key);
         if (element) {
-            element.innerText = langData[key];
+            if (key == 'rephraseCheckboxLabel') {
+                element.innerHTML += langData[key];
+            } else if (key == 'comingSoonCheckboxLabel') {
+                element.innerHTML += langData[key];
+            } else {
+                element.innerText = langData[key];
+            }
         }
     });
 
     if (checkIfOnRightSite) {
         const langSelect = document.getElementById('languageSelect');
-        let langs = await listLangs();
+        const langs = await listLangs();
 
         langs.forEach( async (tLang) => {
             const langDataOfLang = await getLangData(tLang);

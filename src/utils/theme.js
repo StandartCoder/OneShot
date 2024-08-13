@@ -7,13 +7,13 @@ function setTheme(theme) {
     setSettings(settings);
 }
 
-function getTheme() {
+function getCurrentTheme() {
     let settings = getSettings();
     return settings.theme;
 }
 
-function getThemeData() {
-    return config.themes[getTheme()];
+function getThemeData(theme) {
+    return config.themes[theme];
 }
 
-export { setTheme, getTheme, getThemeData };
+export { setTheme, getCurrentTheme, getThemeData };
