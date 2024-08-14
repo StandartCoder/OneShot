@@ -1,7 +1,7 @@
 <!-- Logo -->
 <p align="center">
   <a href="https://github.com/StandartCoder/OneShot">
-    <img src="./src/assets/icon48.png" alt="OneShot Logo" width="100" height="100">
+    <img src="./src/assets/icon48.png" alt="OneShot Logo" width="75" height="75">
   </a>
 </p>
 
@@ -20,7 +20,7 @@
 <!-- Preview -->
 <p align="center">
   <a href="">
-    <img src="./assets/images/previews/homescreen.png" width="20%" height="20%" />
+    <img src="./assets/images/previews/homescreen.png" width="30%" height="30%" />
   </a>
 </p>
 <br/>
