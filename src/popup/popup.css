@@ -241,6 +241,30 @@ h3 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.preset-button[disabled] {
+    background-color: #ddd;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+    animation: glow 1s infinite alternate;
+}
+
+.preset-select[disabled] {
+    background-color: #ddd;
+    color: #888;
+    cursor: not-allowed;
+}
+
+@keyframes glow {
+    /* make it better and so clean*/
+    0% {
+        box-shadow: 0 0 10px rgba(51, 102, 204, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(51, 102, 204, 0.5);
+    }
+}
+
 .copy-checkbox {
     display: block;
     margin-bottom: 10px;

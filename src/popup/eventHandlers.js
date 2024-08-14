@@ -285,9 +285,27 @@ async function initializeContent(tabs, contents) {
     document.getElementById('loaderOverlay').classList.remove('active');
 }
 
+/**
+ * Gets the current tab's URL.
+ * @returns {Promise<string>} The URL of the current tab.
+ */
 function getCurrentTabUrl() {
+    // Define a helper that performs the query
+    function queryTabs(callback) {
+        // Check if the 'chrome' namespace exists, which is used by Chrome
+        if (typeof chrome !== "undefined" && chrome.tabs && chrome.tabs.query) {
+            chrome.tabs.query({ active: true, currentWindow: true }, callback);
+        }
+        // Check if the 'browser' namespace exists, which is used by Firefox and some other browsers
+        else if (typeof browser !== "undefined" && browser.tabs && browser.tabs.query) {
+            browser.tabs.query({ active: true, currentWindow: true }).then(callback);
+        } else {
+            throw new Error("Browser does not support the 'tabs' API");
+        }
+    }
+
     return new Promise((resolve) => {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        queryTabs((tabs) => {
             if (tabs.length > 0) {
                 resolve(tabs[0].url);
             } else {
@@ -296,3 +314,4 @@ function getCurrentTabUrl() {
         });
     });
 }
+

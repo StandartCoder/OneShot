@@ -1,8 +1,16 @@
+// Import settings to access the current language setting
 import { getSettings, setSettings } from './settings.js';
 
+/**
+ * Lists available language codes by checking for corresponding JSON files.
+ * Only adds language codes to the list if the JSON file is successfully fetched.
+ * 
+ * @returns {Promise<string[]>} A promise that resolves to an array of available language codes.
+ */
 async function listLangs() {
     const langs = [];
     const maybeLangs = [
+        // List of potential language codes
         'aa', 'ab', 'ae', 'af', 'ak', 'am', 'an', 'ar', 'as', 'av',
         'ay', 'az', 'ba', 'be', 'bg', 'bh', 'bi', 'bm', 'bn', 'bo',
         'br', 'bs', 'ca', 'ce', 'ch', 'co', 'cr', 'cs', 'cu', 'cv',
@@ -26,9 +34,14 @@ async function listLangs() {
 
     for (const lang of maybeLangs) {
         try {
+            // Attempt to fetch the language file
             const response = await fetch(`../../locales/${lang}.json`);
-            if (response.ok) langs.push(lang);
+            // If the fetch succeeds, add the language code to the list
+            if (response.ok) {
+                langs.push(lang);
+            }
         } catch (error) {
+            // Log an error if the language file is not found
             console.log("No language file found for:", lang);
         }
     }
@@ -36,21 +49,40 @@ async function listLangs() {
     return langs;
 }
 
+/**
+ * Retrieves the currently set language from settings.
+ * 
+ * @returns {string} The currently selected language code.
+ */
 function getCurrentLang() {
     const settings = getSettings();
     return settings.language;
 }
 
+/**
+ * Sets the current language and updates the settings in local storage.
+ * 
+ * @param {string} lang - The language code to set as the current language.
+ */
 function setLang(lang) {
     const settings = getSettings();
     settings.language = lang;
     setSettings(settings);
 }
 
+/**
+ * Fetches language-specific data from a JSON file for a given language code.
+ * 
+ * @param {string} lang - The language code for which to fetch data.
+ * @returns {Promise<Object>} A promise that resolves to the language data object.
+ */
 async function getLangData(lang) {
     const response = await fetch(`../../locales/${lang}.json`);
-    const data = await response.json();
-    return data;
+    if (!response.ok) {
+        throw new Error(`Failed to fetch language data for: ${lang}`);
+    }
+    return await response.json();
 }
 
+// Export functions for use in other parts of the application
 export { listLangs, getCurrentLang, setLang, getLangData };

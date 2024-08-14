@@ -1,0 +1,69 @@
+// CLEAR //
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[1]/div[1]/mat-card[1]/mat-card-actions[1]/button[1]/span[4]
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[2]/div[1]/mat-card[1]/mat-card-actions[1]/button[1]/span[4]
+
+    // ...
+
+    // Anwesenheit selctor //
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[1]/div[1]/mat-card[1]/mat-card-title[1]/div[1]/mat-form-field[1]/div[1]
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[2]/div[1]/mat-card[1]/mat-card-title[1]/div[1]/mat-form-field[1]/div[1]
+
+    // ...
+
+    // Anwesenheit item //
+
+    // /html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/mat-option[1] // anwesend
+
+    // /html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/mat-option[2] // urlaub
+
+    // Ort selector //
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[1]/div[1]/mat-card[1]/mat-card-title[1]/div[1]/mat-form-field[2]/div[1]/div[1]/div[2]
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[2]/div[1]/mat-card[1]/mat-card-title[1]/div[1]/mat-form-field[2]/div[1]/div[1]/div[2]
+
+    // ...
+
+    // Ort //
+
+    // /html[1]/body[1]/div[6]/div[2]/div[1]/div[1]/mat-option[1] // Schule
+
+    // /html[1]/body[1]/div[6]/div[2]/div[1]/div[1]/mat-option[2] // Betrieb
+
+    // Eintrag hinzufügen //
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[1]/div[1]/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/button[1]/span[4]
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[2]/div[1]/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/button[1]/span[4]
+
+    // ...
+
+    // Eintrag hinzufügen select //
+
+    // /html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/div[1]/button[1] // stichpunkt
+
+    // /html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/div[1]/button[2] // freitext
+
+    // dauer //
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[1]/div[1]/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/div[2]/div[1]/lib-spb-timepicker[1]/ngx-mat-timepicker-field[1]/div[1]/ngx-mat-timepicker-time-control[1]/mat-form-field[1]/div[1]/div[2]/div[1]/input[1]
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[2]/div[1]/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/div[2]/div[1]/lib-spb-timepicker[1]/ngx-mat-timepicker-field[1]/div[1]/ngx-mat-timepicker-time-control[1]/mat-form-field[1]/div[1]/div[2]/div[1]/input[1]
+
+    // ...
+
+    // punkte bei frei text //
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[1]/div[1]/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/div[1]/lib-spb-richtext[1]/ckeditor[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/button[5]
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[2]/div[1]/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/div[1]/lib-spb-richtext[1]/ckeditor[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/button[5]
+
+    // ...
+
+    // save button //
+
+    // /html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/div[1]/lib-spb-report-wochentliche-aktionen[1]/div[1]/button[1]/span[4]
