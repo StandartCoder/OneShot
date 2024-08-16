@@ -1,14 +1,11 @@
 import { getPreset } from '../utils/presets.js';
 
 /**
- * Initializes event handlers for the application.
+ * Initializes event handlers for the preset application.
  */
-export function initializeHandlers() {
+export function initializePreset() {
     const presetSelect = document.getElementById('presetSelect');
     const presetButton = document.getElementById('usePresetButton');
-    const rephraseCheckbox = document.getElementById('rephraseCheckbox');
-    const copyButton = document.getElementById('wholeWeekButton');
-    const copyLog = document.getElementById('logTextbox');
 
     presetButton.addEventListener('click', () => doPreset(presetSelect, presetButton));
 }
@@ -41,9 +38,6 @@ async function doPreset(select, button) {
         await applyPresetActions(i, preset);
     }
 
-    // Trigger the save action after presets are applied.
-    clickElementByXPath(`/html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/div[1]/lib-spb-report-wochentliche-aktionen[1]/div[1]/button[1]/span[4]`);
-
     await new Promise(resolve => setTimeout(resolve, 250));
 
     select.disabled = false;
@@ -58,18 +52,22 @@ async function doPreset(select, button) {
 async function applyPresetActions(dayIndex, preset) {
     const basePath = `/html[1]/body[1]/app-spb-root[1]/app-spb-app-layout[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-spb-web-component[1]/dibe-root[1]/lib-spb-berichtsheft[1]/lib-spb-berichtsheft-woche[1]/div[1]/mat-tab-group[1]/div[1]/mat-tab-body[1]/div[1]/lib-spb-berichtsheft-tagesbasis[1]/lib-spb-berichtsheft-tages-bericht[${dayIndex}]/div[1]`;
 
-    // Apply various preset actions such as setting presence, location, and entries.
+    // Apply various preset actions sequentially.
     await clearDay(basePath);
     await setPresence(basePath, preset);
+
     if (preset.ort) {
         await setLocation(basePath, preset);
     }
+
     if (preset.eintrag) {
         await setEntry(basePath, preset);
     }
+
     if (preset.dauer) {
         await setDuration(basePath, preset);
     }
+
     if (preset.punkte) {
         await setPoints(basePath, preset);
     }
@@ -81,7 +79,7 @@ async function applyPresetActions(dayIndex, preset) {
  */
 async function clearDay(basePath) {
     const clearButtonXPath = `${basePath}/mat-card[1]/mat-card-actions[1]/button[1]/span[4]`;
-    clickElementByXPath(clearButtonXPath);
+    await clickElementByXPath(clearButtonXPath);
     await new Promise(resolve => setTimeout(resolve, 100)); // Simulate a short delay for DOM updates
 }
 
@@ -92,11 +90,14 @@ async function clearDay(basePath) {
  */
 async function setPresence(basePath, preset) {
     const presenceXPath = `${basePath}/mat-card[1]/mat-card-title[1]/div[1]/mat-form-field[1]/div[1]`;
-    clickElementByXPath(presenceXPath);
+    await clickElementByXPath(presenceXPath);
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for dropdown to appear
 
-    const presenceItemXPath = `/html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/mat-option[${preset.anwesenheit}]`;
-    clickElementByXPath(presenceItemXPath);
+    for (let i = 0; i < 10; i++) {
+        const presenceItemXPath = `/html[1]/body[1]/div[${i}]/div[2]/div[1]/div[1]/mat-option[${preset.anwesenheit}]`;
+        await clickElementByXPath(presenceItemXPath);
+    }
+
     await new Promise(resolve => setTimeout(resolve, 100)); // Allow time for selection to register
 }
 
@@ -107,11 +108,14 @@ async function setPresence(basePath, preset) {
  */
 async function setLocation(basePath, preset) {
     const locationXPath = `${basePath}/mat-card[1]/mat-card-title[1]/div[1]/mat-form-field[2]/div[1]/div[1]/div[2]`;
-    clickElementByXPath(locationXPath);
+    await clickElementByXPath(locationXPath);
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for dropdown to appear
 
-    const locationItemXPath = `/html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/mat-option[${preset.ort}]`;
-    clickElementByXPath(locationItemXPath);
+    for (let i = 0; i < 10; i++) {
+        const locationItemXPath = `/html[1]/body[1]/div[${i}]/div[2]/div[1]/div[1]/mat-option[${preset.ort}]`;
+        await clickElementByXPath(locationItemXPath);
+    }
+
     await new Promise(resolve => setTimeout(resolve, 100)); // Allow time for selection to register
 }
 
@@ -122,11 +126,14 @@ async function setLocation(basePath, preset) {
  */
 async function setEntry(basePath, preset) {
     const entryXPath = `${basePath}/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/button[1]/span[4]`;
-    clickElementByXPath(entryXPath);
+    await clickElementByXPath(entryXPath);
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for action to complete
 
-    const entryItemXPath = `/html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/div[1]/button[${preset.eintrag}]`;
-    clickElementByXPath(entryItemXPath);
+    for (let i = 0; i < 10; i++) {
+        const entryItemXPath = `/html[1]/body[1]/div[${i}]/div[2]/div[1]/div[1]/div[1]/button[${preset.eintrag}]`;
+        await clickElementByXPath(entryItemXPath);
+    }
+
     await new Promise(resolve => setTimeout(resolve, 100)); // Allow time for selection to register
 }
 
@@ -138,7 +145,7 @@ async function setEntry(basePath, preset) {
 async function setDuration(basePath, preset) {
     const durationXPath = `${basePath}/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/div[2]/div[1]/lib-spb-timepicker[1]/ngx-mat-timepicker-field[1]/div[1]/ngx-mat-timepicker-time-control[1]/mat-form-field[1]/div[1]/div[2]/div[2]/div[1]/span[1]`;
     for (let j = 0; j < preset.dauer; j++) {
-        clickElementByXPath(durationXPath);
+        await clickElementByXPath(durationXPath);
         await new Promise(resolve => setTimeout(resolve, 15)); // Simulate fast clicking for duration setting
     }
     await new Promise(resolve => setTimeout(resolve, 100)); // Ensure last input is registered
@@ -151,21 +158,22 @@ async function setDuration(basePath, preset) {
  */
 async function setPoints(basePath, preset) {
     const pointsXPath = `${basePath}/mat-card[1]/mat-card-content[1]/div[1]/div[1]/div[1]/div[1]/lib-spb-richtext[1]/ckeditor[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/button[5]`;
-    clickElementByXPath(pointsXPath);
+    await clickElementByXPath(pointsXPath);
     await new Promise(resolve => setTimeout(resolve, 100)); // Allow time for points to be set
 }
-
 
 /**
  * Function to click an element by its XPath.
  * @param {string} xpath - The XPath of the element to be clicked.
  */
 function clickElementByXPath(xpath) {
-    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-        chrome.scripting.executeScript({
-            target: {tabId: tabs[0].id},
-            function: clickByXPath,
-            args: [xpath]
+    return new Promise((resolve) => {
+        chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+            chrome.scripting.executeScript({
+                target: {tabId: tabs[0].id},
+                function: clickByXPath,
+                args: [xpath]
+            }, resolve);
         });
     });
 }
@@ -179,31 +187,17 @@ function clickByXPath(xpath) {
     if (element) {
         element.click();
     } else {
-        console.error('No element matches the provided XPath:', xpath);
+        console.error(`Element with XPath was not found: ${xpath}`);
     }
 }
 
 /**
- * Gets the current tab's URL.
- * @returns {Promise<string>} The URL of the current tab.
+ * Gets the current tab?s URL.
+ * @returns {Promise} The URL of the current tab.
  */
 function getCurrentTabUrl() {
-    // Define a helper that performs the query
-    function queryTabs(callback) {
-        // Check if the 'chrome' namespace exists, which is used by Chrome
-        if (typeof chrome !== "undefined" && chrome.tabs && chrome.tabs.query) {
-            chrome.tabs.query({ active: true, currentWindow: true }, callback);
-        }
-        // Check if the 'browser' namespace exists, which is used by Firefox and some other browsers
-        else if (typeof browser !== "undefined" && browser.tabs && browser.tabs.query) {
-            browser.tabs.query({ active: true, currentWindow: true }).then(callback);
-        } else {
-            throw new Error("Browser does not support the 'tabs' API");
-        }
-    }
-
     return new Promise((resolve) => {
-        queryTabs((tabs) => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             if (tabs.length > 0) {
                 resolve(tabs[0].url);
             } else {
@@ -212,4 +206,3 @@ function getCurrentTabUrl() {
         });
     });
 }
-
