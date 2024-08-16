@@ -165,16 +165,47 @@ async function setPoints(basePath, preset) {
 /**
  * Function to click an element by its XPath.
  * @param {string} xpath - The XPath of the element to be clicked.
+ * @returns {Promise<void>} A promise that resolves when the script is executed.
  */
 function clickElementByXPath(xpath) {
-    return new Promise((resolve) => {
-        chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-            chrome.scripting.executeScript({
-                target: {tabId: tabs[0].id},
+    return new Promise((resolve, reject) => {
+        // Function to execute the script in the active tab
+        function executeScript(tabId) {
+            const scriptDetails = {
+                target: { tabId: tabId },
                 function: clickByXPath,
                 args: [xpath]
-            }, resolve);
-        });
+            };
+            
+            if (typeof chrome !== "undefined" && chrome.scripting && chrome.scripting.executeScript) {
+                chrome.scripting.executeScript(scriptDetails, resolve);
+            } else if (typeof browser !== "undefined" && browser.scripting && browser.scripting.executeScript) {
+                browser.scripting.executeScript(scriptDetails).then(resolve, reject);
+            } else {
+                reject(new Error("Unsupported browser"));
+            }
+        }
+
+        // Query the active tab
+        if (typeof chrome !== "undefined" && chrome.tabs && chrome.tabs.query) {
+            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                if (tabs.length > 0) {
+                    executeScript(tabs[0].id);
+                } else {
+                    reject(new Error("No active tab found"));
+                }
+            });
+        } else if (typeof browser !== "undefined" && browser.tabs && browser.tabs.query) {
+            browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+                if (tabs.length > 0) {
+                    executeScript(tabs[0].id);
+                } else {
+                    reject(new Error("No active tab found"));
+                }
+            }, reject);
+        } else {
+            reject(new Error("Unsupported browser"));
+        }
     });
 }
 
@@ -192,12 +223,26 @@ function clickByXPath(xpath) {
 }
 
 /**
- * Gets the current tab?s URL.
- * @returns {Promise} The URL of the current tab.
+ * Gets the current tab's URL.
+ * @returns {Promise<string>} The URL of the current tab.
  */
 function getCurrentTabUrl() {
+    // Define a helper that performs the query
+    function queryTabs(callback) {
+        // Check if the 'chrome' namespace exists, which is used by Chrome
+        if (typeof chrome !== "undefined" && chrome.tabs && chrome.tabs.query) {
+            chrome.tabs.query({ active: true, currentWindow: true }, callback);
+        }
+        // Check if the 'browser' namespace exists, which is used by Firefox and some other browsers
+        else if (typeof browser !== "undefined" && browser.tabs && browser.tabs.query) {
+            browser.tabs.query({ active: true, currentWindow: true }).then(callback);
+        } else {
+            throw new Error("Browser does not support the 'tabs' API");
+        }
+    }
+
     return new Promise((resolve) => {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        queryTabs((tabs) => {
             if (tabs.length > 0) {
                 resolve(tabs[0].url);
             } else {

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "OneShot",
-    "version": "0.8.3",
+    "version": "0.9.3",
     "description": "A nice little helper for your report book",
     "icons": {
         "16": "src/assets/icon16.png",
