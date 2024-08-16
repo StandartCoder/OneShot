@@ -1,6 +1,7 @@
 // Import functions to initialize event handlers
 import { initializeEventHandlers } from './eventHandlers.js';
 import { initializePreset } from './presetHandler.js';
+import { initializeCopy } from './copyHandler.js';
 
 /**
  * Sets up the initialization of event handlers after the DOM content has fully loaded.
@@ -12,4 +13,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize additional handlers for tasks
     initializePreset();
+    initializeCopy();
 });
